@@ -1,0 +1,343 @@
+/* ================================================================
+   VEN-TEC PIP-READER  -  legacy stylesheet
+   Targets Android 4.x stock WebView:
+   - NO css custom properties (var())
+   - NO modern flexbox (uses block / absolute / inline-block)
+   - -webkit- prefixes for gradients / transforms
+   ================================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: #05070a;
+  overflow: hidden;
+  font-family: "Courier New", Courier, monospace;
+  -webkit-text-size-adjust: none;
+}
+
+.hidden { display: none !important; }
+
+/* ---------- PHOSPHOR THEMES ---------- */
+/* AMBER (default) */
+.theme-amber .ink        { color: #ffb642; }
+.theme-amber body,
+.theme-amber .fg         { color: #ffb642; }
+/* set on <body>; child rules read these via explicit selectors below */
+
+/* We avoid var(); instead theme colors are applied per-class. */
+
+/* Base ink color per theme applied to text-bearing elements */
+.theme-amber .topbar-brand,
+.theme-amber .topbar-sub,
+.theme-amber .topbar-clock,
+.theme-amber .screen-head,
+.theme-amber .reader-title,
+.theme-amber .reader-body,
+.theme-amber .booklist li,
+.theme-amber .about-pre,
+.theme-amber .cfg-label,
+.theme-amber .cfg-val,
+.theme-amber .boot-text,
+.theme-amber .boot-cursor,
+.theme-amber .import-msg { color: #ffb642; }
+
+.theme-green .topbar-brand,
+.theme-green .topbar-sub,
+.theme-green .topbar-clock,
+.theme-green .screen-head,
+.theme-green .reader-title,
+.theme-green .reader-body,
+.theme-green .booklist li,
+.theme-green .about-pre,
+.theme-green .cfg-label,
+.theme-green .cfg-val,
+.theme-green .boot-text,
+.theme-green .boot-cursor,
+.theme-green .import-msg { color: #46ff8c; }
+
+/* glow */
+.theme-amber .topbar-brand { text-shadow: 0 0 8px rgba(255,182,66,0.7); }
+.theme-green .topbar-brand { text-shadow: 0 0 8px rgba(70,255,140,0.7); }
+
+/* ================= BOOT ================= */
+.boot {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #05070a;
+  padding: 18px 14px;
+  z-index: 50;
+}
+.boot-text {
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.theme-amber .boot-text { color: #46ff8c; } /* boot always green terminal */
+.theme-green .boot-text { color: #46ff8c; }
+.boot-cursor {
+  display: inline-block;
+  color: #46ff8c;
+  font-size: 15px;
+  -webkit-animation: blink 1s step-end infinite;
+  animation: blink 1s step-end infinite;
+}
+@-webkit-keyframes blink { 50% { opacity: 0; } }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ================= APP SHELL ================= */
+.app {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+}
+
+/* top bar */
+.topbar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px;
+  background: #0a0f14;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.topbar-brand {
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+.topbar-sub {
+  font-size: 10px;
+  opacity: 0.7;
+  margin-left: 8px;
+}
+.topbar-clock {
+  float: right;
+  font-size: 13px;
+  opacity: 0.85;
+}
+.topbar-rule {
+  position: absolute;
+  top: 40px; left: 0; right: 0;
+  height: 2px;
+  background: #ffb642;
+}
+.theme-green .topbar-rule { background: #46ff8c; }
+
+/* screens container area */
+.screen {
+  position: absolute;
+  top: 42px; left: 0; right: 0; bottom: 48px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 12px;
+}
+.screen-head {
+  font-size: 12px;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  margin-bottom: 12px;
+  border-bottom: 1px dashed rgba(255,182,66,0.3);
+  padding-bottom: 6px;
+}
+.theme-green .screen-head { border-bottom-color: rgba(70,255,140,0.3); }
+
+/* ---------- import row ---------- */
+.import-row { margin-bottom: 14px; }
+.btn-file {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ffb642;
+  color: #ffb642;
+  padding: 8px 12px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.theme-green .btn-file { border-color: #46ff8c; color: #46ff8c; }
+.btn-file input {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  opacity: 0;
+}
+.import-msg { font-size: 11px; margin-left: 8px; }
+
+/* ---------- book list ---------- */
+.booklist { list-style: none; }
+.booklist li {
+  border: 1px solid rgba(255,182,66,0.35);
+  border-left: 4px solid #ffb642;
+  padding: 12px 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  background: rgba(255,182,66,0.03);
+}
+.theme-green .booklist li {
+  border-color: rgba(70,255,140,0.35);
+  border-left-color: #46ff8c;
+  background: rgba(70,255,140,0.03);
+}
+.booklist .bk-title { display: block; font-weight: bold; letter-spacing: 1px; }
+.booklist .bk-meta { display: block; font-size: 11px; opacity: 0.65; margin-top: 4px; }
+.booklist .bk-tag {
+  display: inline-block;
+  font-size: 9px;
+  border: 1px solid;
+  padding: 1px 5px;
+  margin-top: 6px;
+  opacity: 0.8;
+}
+
+/* ================= READER ================= */
+.reader-head {
+  position: absolute;
+  top: 42px; left: 0; right: 0;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 8px;
+  background: #0a0f14;
+  border-bottom: 1px solid rgba(255,182,66,0.25);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.theme-green .reader-head { border-bottom-color: rgba(70,255,140,0.25); }
+.btn-back {
+  background: transparent;
+  border: 1px solid #ffb642;
+  color: #ffb642;
+  font-family: inherit;
+  font-size: 11px;
+  padding: 4px 8px;
+  vertical-align: middle;
+}
+.theme-green .btn-back { border-color: #46ff8c; color: #46ff8c; }
+.reader-title {
+  font-size: 12px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.reader-body {
+  position: absolute;
+  top: 78px; left: 0; right: 0; bottom: 48px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px 16px 40px 16px;
+  font-size: 15px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.reader-body h2 {
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin: 18px 0 8px 0;
+  border-bottom: 1px dashed rgba(255,182,66,0.4);
+  padding-bottom: 4px;
+}
+.theme-green .reader-body h2 { border-bottom-color: rgba(70,255,140,0.4); }
+
+/* ================= SETTINGS ================= */
+.cfg-block {
+  border: 1px solid rgba(255,182,66,0.25);
+  padding: 12px;
+  margin-bottom: 12px;
+}
+.theme-green .cfg-block { border-color: rgba(70,255,140,0.25); }
+.cfg-label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+.cfg-btn {
+  background: transparent;
+  border: 1px solid #ffb642;
+  color: #ffb642;
+  font-family: inherit;
+  font-size: 12px;
+  padding: 7px 12px;
+  margin-right: 6px;
+  letter-spacing: 1px;
+}
+.theme-green .cfg-btn { border-color: #46ff8c; color: #46ff8c; }
+.cfg-btn.active {
+  background: #ffb642;
+  color: #05070a;
+  font-weight: bold;
+}
+.theme-green .cfg-btn.active { background: #46ff8c; color: #05070a; }
+.cfg-val { font-size: 12px; margin-left: 6px; }
+
+/* ================= ABOUT ================= */
+.about-pre {
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.about-pre .ok { color: #46ff8c; }
+
+/* ================= NAV BAR ================= */
+.navbar {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 48px;
+  background: #0a0f14;
+  border-top: 2px solid #ffb642;
+}
+.theme-green .navbar { border-top-color: #46ff8c; }
+.nav-btn {
+  display: block;
+  float: left;
+  width: 33.33%;
+  height: 48px;
+  background: transparent;
+  border: none;
+  border-right: 1px solid rgba(255,182,66,0.2);
+  color: #ffb642;
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.theme-green .nav-btn { color: #46ff8c; border-right-color: rgba(70,255,140,0.2); }
+.nav-btn.nav-active {
+  background: rgba(255,182,66,0.14);
+  font-weight: bold;
+}
+.theme-green .nav-btn.nav-active { background: rgba(70,255,140,0.14); }
+
+/* ================= CRT FX ================= */
+.scanlines {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 40;
+  background: -webkit-repeating-linear-gradient(
+      top, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px,
+      rgba(0,0,0,0.22) 3px, rgba(0,0,0,0.22) 3px);
+  background: repeating-linear-gradient(
+      to bottom, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px,
+      rgba(0,0,0,0.22) 3px, rgba(0,0,0,0.22) 3px);
+}
+.vignette {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 39;
+  background: -webkit-radial-gradient(center, ellipse,
+      rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%);
+  background: radial-gradient(ellipse at center,
+      rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%);
+}
