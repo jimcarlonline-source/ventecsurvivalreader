@@ -30,28 +30,19 @@ jobs:
       - name: Install SDK packages
         run: |
           yes | sdkmanager --licenses > /dev/null || true
-          sdkmanager "platform-tools" "platforms;android-28" "build-tools;28.0.3"
+          sdkmanager "platform-tools" "platforms;android-32" "build-tools;32.0.0"
 
-      - name: Set up JDK 8 (for the Cordova build)
+      - name: Set up JDK 11 (for the Cordova build)
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '8'
-
-      - name: Install Gradle 4.10.3
-        run: |
-          wget -q https://services.gradle.org/distributions/gradle-4.10.3-bin.zip -O /tmp/gradle.zip
-          sudo unzip -q -o /tmp/gradle.zip -d /opt
-          echo "/opt/gradle-4.10.3/bin" >> "$GITHUB_PATH"
-
-      - name: Show Gradle version
-        run: gradle -version
+          java-version: '11'
 
       - name: Install Cordova CLI
-        run: npm install -g cordova@10.0.0
+        run: npm install -g cordova@12.0.0
 
-      - name: Add Android platform (legacy, minSdk 16)
-        run: cordova platform add android@8.1.0 --no-telemetry
+      - name: Add Android platform (minSdk 22 / Android 5.1)
+        run: cordova platform add android@11.0.0 --no-telemetry
 
       - name: Build debug APK
         run: cordova build android --no-telemetry
