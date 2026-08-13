@@ -12,11 +12,6 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
 
-    <!-- App icon: drop a 512x512 PNG at res/icon.png and uncomment the
-         icon lines below to brand the launcher. Left out by default so
-         the CI build never fails on a missing binary asset. -->
-    <!-- <icon src="res/icon.png" /> -->
-
     <preference name="DisallowOverscroll" value="true" />
     <preference name="BackgroundColor" value="0xff05070a" />
     <preference name="Fullscreen" value="false" />
@@ -25,10 +20,9 @@
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
 
     <platform name="android">
-        <!-- Android 4.1 (API 16) and up -->
-        <preference name="android-minSdkVersion" value="16" />
-        <preference name="android-targetSdkVersion" value="28" />
+        <preference name="android-minSdkVersion" value="22" />
+        <preference name="android-targetSdkVersion" value="32" />
     </platform>
 
-    <engine name="android" spec="8.1.0" />
+    <engine name="android" spec="11.0.0" />
 </widget>
