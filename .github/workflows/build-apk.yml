@@ -38,6 +38,15 @@ jobs:
           distribution: temurin
           java-version: '8'
 
+      - name: Install Gradle 4.10.3
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-4.10.3-bin.zip -O /tmp/gradle.zip
+          sudo unzip -q -o /tmp/gradle.zip -d /opt
+          echo "/opt/gradle-4.10.3/bin" >> "$GITHUB_PATH"
+
+      - name: Show Gradle version
+        run: gradle -version
+
       - name: Install Cordova CLI
         run: npm install -g cordova@10.0.0
 
