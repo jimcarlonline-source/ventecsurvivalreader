@@ -19,6 +19,9 @@
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
 
+    <preference name="scheme" value="http" />
+    <preference name="hostname" value="localhost" />
+
     <platform name="android">
         <preference name="android-minSdkVersion" value="22" />
         <preference name="android-targetSdkVersion" value="32" />
