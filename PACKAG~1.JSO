@@ -1,0 +1,16 @@
+{
+  "name": "ventec-pip-reader",
+  "displayName": "VEN-TEC Pip-Reader",
+  "version": "1.0.0",
+  "description": "Survival databank and offline ebook reader. Fallout-style post-apocalypse terminal UI.",
+  "author": "VEN-TEC Industries",
+  "license": "MIT",
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  },
+  "devDependencies": {
+    "cordova-android": "8.1.0"
+  }
+}

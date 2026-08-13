@@ -1,0 +1,7 @@
+# Cordova build artifacts (restored by the CI 'platform add' step)
+platforms/
+plugins/
+node_modules/
+*.apk
+.DS_Store
+npm-debug.log
