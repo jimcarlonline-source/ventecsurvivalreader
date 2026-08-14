@@ -1,16 +1,22 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ventec.pipreader" version="1.0.0"
+<widget id="com.ventec.venread" version="1.1.0"
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <name>VEN-TEC Pip-Reader</name>
-    <description>Survival databank and offline ebook reader. Post-apocalypse terminal edition.</description>
+    <name>VEN-READ</name>
+    <description>VEN-READ survival field library and offline ebook reader. Post-apocalypse terminal edition.</description>
     <author email="jimcarlonline@gmail.com" href="https://ven-tec.local">VEN-TEC Industries</author>
 
     <content src="index.html" />
+    <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+
+    <!-- App icon: drop a 512x512 PNG at res/icon.png and uncomment the
+         icon lines below to brand the launcher. Left out by default so
+         the CI build never fails on a missing binary asset. -->
+    <!-- <icon src="res/icon.png" /> -->
 
     <preference name="DisallowOverscroll" value="true" />
     <preference name="BackgroundColor" value="0xff05070a" />
@@ -19,10 +25,14 @@
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
 
+    <!-- Serve local assets over http://localhost. The https handler is
+         refused by many older System WebViews (common on Android 5.x),
+         which shows up as net::ERR_CONNECTION_REFUSED on launch. -->
     <preference name="scheme" value="http" />
     <preference name="hostname" value="localhost" />
 
     <platform name="android">
+        <!-- Android 5.1 (API 22) and up -->
         <preference name="android-minSdkVersion" value="22" />
         <preference name="android-targetSdkVersion" value="32" />
     </platform>
