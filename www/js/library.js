@@ -1,33 +1,29 @@
 /* ================================================================
-   VEN-TEC PIP-READER  -  bundled survival databank
-   Each entry: { id, title, meta, tag, body }
+   VEN-READ  -  bundled survival protocols
+   These are compiled at runtime into a single "Survivor's Field
+   Compilation" library entry (see app.js buildCompilation()).
    In body text, a line beginning with "## " renders as a heading.
-   Content is general field-reference material. In any real
-   emergency, seek professional help where it is available.
+   General field reference only - seek professional help when available.
    ================================================================ */
-var VENTEC_BOOKS = [
+var VENREAD_PROTOCOLS = [
   {
-    id: "b_water",
-    title: "PROTOCOL 01 :: WATER",
-    meta: "Sourcing / purifying / rationing",
-    tag: "PRIORITY-HIGH",
+    num: "01",
+    title: "WATER",
     body:
 "## THE RULE OF THREES\n" +
 "You can last roughly three minutes without air, three days without water, three weeks without food. Water sits at the center of survival. Secure it before it becomes desperate.\n\n" +
 "## FINDING WATER\n" +
 "Move downhill; water collects in low ground. Follow animal tracks, insect swarms, and green vegetation. Rainwater caught on a clean tarp is among the safest sources. Morning dew wiped from grass with a cloth and wrung into a container adds up. Avoid stagnant pools with no plant or animal life around them.\n\n" +
 "## MAKING IT SAFE\n" +
-"Assume all wild water carries pathogens. A rolling boil for one full minute kills most organisms (three minutes above high altitude). If you cannot boil, a tight cloth filter removes sediment but NOT microbes. Chemical treatment and commercial filters are backups, not magic.\n\n" +
+"Assume all wild water carries pathogens. A rolling boil for one full minute kills most organisms (three minutes at high altitude). If you cannot boil, a tight cloth filter removes sediment but NOT microbes. Chemical treatment and commercial filters are backups, not magic.\n\n" +
 "## RATIONING\n" +
 "Do not ration water into dehydration to 'save it.' Drink what your body needs and spend energy finding more. Sip steadily rather than gulping. Reduce sweat: work in the cool hours, rest in shade during peak heat.\n\n" +
 "## WARNING\n" +
 "Never drink seawater, urine, or blood; they accelerate dehydration. Cloudy or foul water should be filtered AND disinfected."
   },
   {
-    id: "b_fire",
-    title: "PROTOCOL 02 :: FIRE",
-    meta: "Ignition / fuel / heat discipline",
-    tag: "PRIORITY-HIGH",
+    num: "02",
+    title: "FIRE",
     body:
 "## WHY FIRE\n" +
 "Fire purifies water, cooks food, wards off cold and predators, dries gear, and signals rescue. It is a morale engine as much as a tool.\n\n" +
@@ -41,10 +37,8 @@ var VENTEC_BOOKS = [
 "Split wet wood to reach the dry core. Feather-stick shavings light easier than whole sticks. Keep a stash of tinder dry against your body."
   },
   {
-    id: "b_shelter",
-    title: "PROTOCOL 03 :: SHELTER",
-    meta: "Exposure defense / site selection",
-    tag: "PRIORITY-HIGH",
+    num: "03",
+    title: "SHELTER",
     body:
 "## EXPOSURE KILLS FASTEST\n" +
 "In cold or wet conditions, shelter often outranks water and fire. Hypothermia can drop you in hours. Build before dark and before you are exhausted.\n\n" +
@@ -58,10 +52,8 @@ var VENTEC_BOOKS = [
 "Wet clothing loses most of its insulating value. Shed sweat-soaked layers, rig a rain shed first, and keep one dry layer in reserve for sleeping."
   },
   {
-    id: "b_firstaid",
-    title: "PROTOCOL 04 :: FIRST AID",
-    meta: "Bleeding / shock / basic wound care",
-    tag: "MEDICAL",
+    num: "04",
+    title: "FIRST AID",
     body:
 "## PRIORITIES: THE ABCs\n" +
 "Airway, Breathing, Circulation. Make sure the airway is open and the person is breathing before treating anything else. Life-threatening bleeding is treated immediately, even before a full assessment.\n\n" +
@@ -75,10 +67,8 @@ var VENTEC_BOOKS = [
 "This is general reference only, not a substitute for trained medical care. Get professional help whenever it is available."
   },
   {
-    id: "b_food",
-    title: "PROTOCOL 05 :: FOOD & FORAGING",
-    meta: "Calories / trapping / plant caution",
-    tag: "PRIORITY-MED",
+    num: "05",
+    title: "FOOD & FORAGING",
     body:
 "## DON'T PANIC ABOUT FOOD\n" +
 "A healthy body endures weeks without food. Water, warmth, and shelter come first. But calories fuel the work of survival, so a plan matters.\n\n" +
@@ -92,10 +82,8 @@ var VENTEC_BOOKS = [
 "Cooking kills parasites and makes calories safer to eat. When in doubt, apply heat."
   },
   {
-    id: "b_nav",
-    title: "PROTOCOL 06 :: NAVIGATION & SIGNAL",
-    meta: "Direction / self-rescue / rescue",
-    tag: "PRIORITY-MED",
+    num: "06",
+    title: "NAVIGATION & SIGNAL",
     body:
 "## STOP FIRST\n" +
 "When lost, STOP: Stop, Think, Observe, Plan. Panic burns energy and daylight. Sit, drink, and assess before moving.\n\n" +
