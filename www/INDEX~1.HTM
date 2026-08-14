@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<title>VEN-READ</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body class="theme-amber">
+
+  <!-- ============ LOADING / SPLASH ============ -->
+  <div id="loading" class="loading">
+    <div class="load-logo">
+      <svg viewBox="0 0 120 120" width="118" height="118" class="logo-svg">
+        <g class="logo-stroke" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 34 L58 26 L58 92 L20 100 Z"></path>
+          <path d="M100 34 L62 26 L62 92 L100 100 Z"></path>
+          <line x1="60" y1="27" x2="60" y2="92"></line>
+          <path d="M27 46 L50 41"></path>
+          <path d="M27 57 L50 52"></path>
+          <path d="M27 68 L44 64"></path>
+        </g>
+        <g class="logo-signal" fill="none" stroke-width="3.5" stroke-linecap="round">
+          <path d="M72 44 q10 4 12 16"></path>
+          <path d="M74 36 q17 6 20 24"></path>
+          <path d="M76 28 q24 8 28 32"></path>
+        </g>
+      </svg>
+    </div>
+    <div class="load-word">VEN-READ</div>
+    <div class="load-sub">SURVIVAL FIELD LIBRARY</div>
+
+    <div class="load-bar-wrap">
+      <div id="loadBar" class="load-bar"></div>
+    </div>
+    <pre id="loadText" class="load-text"></pre>
+    <div class="load-corp">VEN-TEC INDUSTRIES (C) 2077</div>
+    <div class="scanlines"></div>
+    <div class="vignette"></div>
+  </div>
+
+  <!-- ============ MAIN SHELL ============ -->
+  <div id="app" class="app hidden">
+
+    <!-- HEADER -->
+    <div class="topbar">
+      <span class="topbar-brand">VEN-READ</span>
+      <span class="topbar-sub">v1.1</span>
+      <span id="clock" class="topbar-clock">--:--</span>
+    </div>
+    <div class="topbar-rule"></div>
+
+    <!-- ===== SCREEN: MENU (hub) ===== -->
+    <div id="screen-menu" class="screen">
+      <div class="menu-hero">
+        <svg viewBox="0 0 120 120" width="86" height="86" class="logo-svg">
+          <g class="logo-stroke" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 34 L58 26 L58 92 L20 100 Z"></path>
+            <path d="M100 34 L62 26 L62 92 L100 100 Z"></path>
+            <line x1="60" y1="27" x2="60" y2="92"></line>
+            <path d="M27 46 L50 41"></path>
+            <path d="M27 57 L50 52"></path>
+            <path d="M27 68 L44 64"></path>
+          </g>
+          <g class="logo-signal" fill="none" stroke-width="3.5" stroke-linecap="round">
+            <path d="M72 44 q10 4 12 16"></path>
+            <path d="M74 36 q17 6 20 24"></path>
+            <path d="M76 28 q24 8 28 32"></path>
+          </g>
+        </svg>
+        <div class="menu-hero-word">VEN-READ</div>
+        <div class="menu-hero-sub">SELECT PROTOCOL</div>
+      </div>
+      <div class="menu-list">
+        <button class="menu-btn" data-go="library"><span class="mb-key">01</span> LIBRARY</button>
+        <button class="menu-btn" data-go="import"><span class="mb-key">02</span> IMPORT MANUAL</button>
+        <button class="menu-btn" data-go="settings"><span class="mb-key">03</span> CONFIG</button>
+        <button class="menu-btn" data-go="about"><span class="mb-key">04</span> INFO</button>
+      </div>
+    </div>
+
+    <!-- ===== SCREEN: LIBRARY ===== -->
+    <div id="screen-library" class="screen hidden">
+      <div class="screen-head">// ARCHIVE :: FIELD LIBRARY</div>
+      <div class="import-row">
+        <label class="btn-file">
+          + IMPORT MANUAL
+          <input type="file" id="fileInput" accept=".txt,.md,.markdown,.htm,.html,.epub,text/plain">
+        </label>
+        <span id="importMsg" class="import-msg"></span>
+      </div>
+      <ul id="bookList" class="booklist"></ul>
+      <div class="fmt-note">Supported: TXT, MD, HTML, HTM, EPUB</div>
+    </div>
+
+    <!-- ===== SCREEN: READER ===== -->
+    <div id="screen-reader" class="screen hidden">
+      <div class="reader-head">
+        <button class="btn-back" id="btnBack">&lt; BACK</button>
+        <span id="readerTitle" class="reader-title">&nbsp;</span>
+      </div>
+      <div id="readerBody" class="reader-body"></div>
+    </div>
+
+    <!-- ===== SCREEN: SETTINGS ===== -->
+    <div id="screen-settings" class="screen hidden">
+      <div class="screen-head">// SYSTEM CONFIG</div>
+
+      <div class="cfg-block">
+        <div class="cfg-label">DISPLAY PHOSPHOR</div>
+        <button class="cfg-btn" id="btnAmber">AMBER</button>
+        <button class="cfg-btn" id="btnGreen">GREEN</button>
+      </div>
+
+      <div class="cfg-block">
+        <div class="cfg-label">TEXT SIZE</div>
+        <button class="cfg-btn" id="btnFontDown">A -</button>
+        <button class="cfg-btn" id="btnFontUp">A +</button>
+        <span id="fontVal" class="cfg-val">100%</span>
+      </div>
+
+      <div class="cfg-block">
+        <div class="cfg-label">CRT SCANLINES</div>
+        <button class="cfg-btn" id="btnScan">ON</button>
+      </div>
+
+      <div class="cfg-block">
+        <div class="cfg-label">DATA</div>
+        <button class="cfg-btn" id="btnClearImports">PURGE IMPORTS</button>
+      </div>
+    </div>
+
+    <!-- ===== SCREEN: ABOUT ===== -->
+    <div id="screen-about" class="screen hidden">
+      <div class="screen-head">// UNIT INFORMATION</div>
+      <pre class="about-pre">
+ VEN-TEC INDUSTRIES
+ VEN-READ FIELD LIBRARY
+ -------------------------------
+ MODEL......: VEN-READ 3000
+ FIRMWARE...: v1.1.0
+ STATUS.....: <span class="ok">OPERATIONAL</span>
+ POWER......: NUCLEAR CELL / 87%
+
+ "KNOWLEDGE OUTLASTS THE BOMB."
+
+ Load your own manuals via IMPORT.
+ Formats: TXT, MD, HTML, HTM, EPUB.
+ All data is retained offline in
+ local memory.
+
+ (c) 2077 VEN-TEC. STAY ALIVE.
+      </pre>
+    </div>
+
+    <!-- FOOTER NAV -->
+    <div class="navbar">
+      <button class="nav-btn nav-active" data-screen="menu">MENU</button>
+      <button class="nav-btn" data-screen="library">ARCHIVE</button>
+      <button class="nav-btn" data-screen="settings">CONFIG</button>
+      <button class="nav-btn" data-screen="about">INFO</button>
+    </div>
+
+    <!-- CRT OVERLAY -->
+    <div id="scanlines" class="scanlines"></div>
+    <div class="vignette"></div>
+  </div>
+
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/library.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
